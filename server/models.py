@@ -25,7 +25,7 @@ class Vehicle(models.Model):
     fuel_type = models.CharField(blank=False, null=False, max_length=128)
 
     class Meta:
-        constrains = [
+        constraints = [
             UniqueConstraint(
                 name="unique_vin_case_insensitive",
                 fields=["vin"],
