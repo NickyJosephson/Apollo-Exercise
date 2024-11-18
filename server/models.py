@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from django.db.models import UniqueConstraint
-
+import re
 
 # Create your models here.
 class Vehicle(models.Model):
