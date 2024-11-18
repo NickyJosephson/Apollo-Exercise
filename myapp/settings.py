@@ -45,9 +45,6 @@ INSTALLED_APPS = [
     'server'
 ]
 
-REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'server.custom_exception.custom_exception_handler',
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
