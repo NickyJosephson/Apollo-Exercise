@@ -21,7 +21,7 @@ class Vehicle(models.Model):
     description = models.TextField(blank=False, null=False)
     horse_power = models.IntegerField(blank=False, null=False)
     model_name = models.CharField(blank=False, null=False, max_length=128)
-    model_year = models.Integer(blank=False, null=False)
+    model_year = models.IntegerField(blank=False, null=False)
     purchase_price = models.FloatField(blank=False, null=False)
     fuel_type = models.CharField(blank=False, null=False, max_length=128)
 
