@@ -53,6 +53,10 @@ A Django REST Framework-based API for managing vehicle information. This project
 4. **Run the server**
     ```bash
     python manage.py runserver
+5. **Alternatively, you can use the provided makefile to do the installation for you**
+    ```bash
+    
+
 
 ## **Usage**
 ### Endpoints
