@@ -5,7 +5,7 @@ import json.decoder
 from .models import Vehicle
 
 def custom_exception_handler(exc, context):
-    # response = exception_handler(exc, context)
+    response = exception_handler(exc, context)
 
     if isinstance(exc, json.decoder.JSONDecodeError):
         return Response(
