@@ -14,11 +14,6 @@ class CustomAPIView(APIView):
                 {"error": "Invalid JSON format. Please send valid JSON."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        except Vehicle.DoesNotExist:
-            return Response(
-                {'errors': 'Vehicle not found.'},
-            status=status.HTTP_404_NOT_FOUND
-            )
         except Exception as e:
             # Catch-all for unexpected errors with DRF Response
             return Response(
@@ -30,9 +25,15 @@ class CustomAPIView(APIView):
 class VehicleView(CustomAPIView):
     def get(self, request, vin=None):
         if vin:
-            instance = Vehicle.objects.get(vin=vin)
-            serializer = VehicleSerializer(instance)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            try:
+                instance = Vehicle.objects.get(vin=vin)
+                serializer = VehicleSerializer(instance)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except Vehicle.DoesNotExist:
+                return Response(
+                    {'errors': 'Vehicle not found.'},
+                    status=status.HTTP_404_NOT_FOUND
+                )
         else:
             queryset = Vehicle.objects.all()
             serializer = VehicleSerializer(queryset, many=True)
@@ -46,18 +47,29 @@ class VehicleView(CustomAPIView):
         return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
     
     def put(self, request, vin=None):
-        instance = Vehicle.objects.get(vin=vin)
-        serializer = VehicleSerializer(instance, data=request.data)
-        if serializer.is_valid():
-            instance = serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        try:
+            instance = Vehicle.objects.get(vin=vin)
+            serializer = VehicleSerializer(instance, data=request.data)
+            if serializer.is_valid():
+                instance = serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        except Vehicle.DoesNotExist:
+            return Response(
+                {'errors': 'Vehicle not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
     
     def delete(self, request, vin=None):
-        vehicle = Vehicle.objects.get(vin=vin)
-        vehicle.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
+        try:
+            vehicle = Vehicle.objects.get(vin=vin)
+            vehicle.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Vehicle.DoesNotExist:
+            return Response(
+                {'errors': 'Vehicle not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
 
 
 
