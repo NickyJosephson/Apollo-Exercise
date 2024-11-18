@@ -18,7 +18,13 @@ class CustomAPIView(APIView):
             return Response(
                 {'errors': 'Vehicle not found.'},
             status=status.HTTP_404_NOT_FOUND
-            ) 
+            )
+        except Exception as e:
+            # Catch-all for unexpected errors with DRF Response
+            return Response(
+                {"error": f"An unexpected error occurred: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 class VehicleView(CustomAPIView):
