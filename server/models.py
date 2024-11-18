@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django.db.models import UniqueConstraint
+
 
 # Create your models here.
 class Vehicle(models.Model):
@@ -21,3 +23,14 @@ class Vehicle(models.Model):
     model_year = models.DateField(blank=False, null=False)
     purchase_price = models.FloatField(blank=False, null=False)
     fuel_type = models.CharField(blank=False, null=False, max_length=128)
+
+    class Meta:
+        constrains = [
+            UniqueConstraint(
+                name="unique_vin_case_insensitive",
+                fields=["vin"],
+                condition=None,
+                violation_error_message="VIN must be unique (case-insensitive).",
+                expressions=[("vin").lower()]
+            )
+        ]

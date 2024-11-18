@@ -20,7 +20,6 @@ class CustomAPIView(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
-
 class VehicleView(CustomAPIView):
     def get(self, request, vin=None):
         if vin:
