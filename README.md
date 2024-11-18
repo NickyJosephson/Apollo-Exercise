@@ -56,7 +56,7 @@ A Django REST Framework-based API for managing vehicle information. This project
 5. **Alternatively, you can use the provided makefile to do the installation for you**
     ```bash
     make setup
-    
+---
 
 
 ## **Usage**

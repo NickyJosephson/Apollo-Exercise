@@ -8,7 +8,7 @@ class Vehicle(models.Model):
         unique=True,
         validators=[
             RegexValidator(
-                regex=r'^[A-HJ-NPR-Z0-9]{17}$',  # VIN format (17 alphanumeric, excluding I, O, Q)
+                regex=r'^[A-HJ-NPR-Z0-9]{17}$',
                 message="Invalid VIN format."
             )
         ],  
