@@ -15,7 +15,6 @@ class CustomAPIView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         except Exception as e:
-            # Catch-all for unexpected errors with DRF Response
             return Response(
                 {"error": f"An unexpected error occurred: {str(e)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
