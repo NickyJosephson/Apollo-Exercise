@@ -15,3 +15,6 @@ class VehicleSerializer(serializers.ModelSerializer):
             'purchase_price',
             'fuel_type'
         ]
+        
+    def validate_vin(self, value):
+        return value.upper()

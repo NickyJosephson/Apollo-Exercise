@@ -24,7 +24,7 @@ class VehicleView(CustomAPIView):
     def get(self, request, vin=None):
         if vin:
             try:
-                instance = Vehicle.objects.get(vin=vin)
+                instance = Vehicle.objects.get(vin=vin.upper())
                 serializer = VehicleSerializer(instance)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             except Vehicle.DoesNotExist:
@@ -46,7 +46,7 @@ class VehicleView(CustomAPIView):
     
     def put(self, request, vin=None):
         try:
-            instance = Vehicle.objects.get(vin=vin)
+            instance = Vehicle.objects.get(vin=vin.upper())
             serializer = VehicleSerializer(instance, data=request.data)
             if serializer.is_valid():
                 instance = serializer.save()
@@ -60,7 +60,7 @@ class VehicleView(CustomAPIView):
     
     def delete(self, request, vin=None):
         try:
-            vehicle = Vehicle.objects.get(vin=vin)
+            vehicle = Vehicle.objects.get(vin=vin.upper())
             vehicle.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Vehicle.DoesNotExist:
