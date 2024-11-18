@@ -28,9 +28,8 @@ class Vehicle(models.Model):
         constraints = [
             UniqueConstraint(
                 name="unique_vin_case_insensitive",
-                fields=["vin"],
-                condition=None,
+                fields=[],
                 violation_error_message="VIN must be unique (case-insensitive).",
-                expressions=[("vin").lower()]
+                expressions=[("vin").lower()],
             )
         ]
