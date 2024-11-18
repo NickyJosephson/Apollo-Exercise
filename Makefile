@@ -13,7 +13,7 @@ setup:
 	$(MANAGE) makemigrations
 	$(MANAGE) migrate
 	@echo "Starting the server..."
-	$(MANAGE) runserver
+	$(MANAGE) runserver 0.0.0.0:8000
 
 clean-all:
 	@echo "Removing virtual environment..."
