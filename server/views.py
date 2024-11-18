@@ -8,10 +8,8 @@ import json.decoder
 class CustomAPIView(APIView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            # Try parsing the request
             return super().dispatch(request, *args, **kwargs)
         except json.decoder.JSONDecodeError:
-            # Handle invalid JSON globally
             return Response(
                 {"error": "Invalid JSON format. Please send valid JSON."},
                 status=status.HTTP_400_BAD_REQUEST
@@ -33,8 +31,6 @@ class VehicleView(CustomAPIView):
             queryset = Vehicle.objects.all()
             serializer = VehicleSerializer(queryset, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
-    
-            
     
     def post(self, request):
         serializer = VehicleSerializer(data=request.data)
