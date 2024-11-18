@@ -59,11 +59,11 @@ A Django REST Framework-based API for managing vehicle information. This project
 
 | Method | Endpoint        | Description                           |
 |--------|------------------|---------------------------------------|
-| GET    | `/vehicle/`      | Retrieve a list of all vehicles.      |
-| GET    | `/vehicle/<vin>/`| Retrieve a single vehicle by VIN.     |
-| POST   | `/vehicle/`      | Create a new vehicle.                 |
-| PUT    | `/vehicle/<vin>/`| Update an existing vehicle by VIN.    |
-| DELETE | `/vehicle/<vin>/`| Delete a vehicle by VIN.              |
+| GET    | `/vehicle`      | Retrieve a list of all vehicles.      |
+| GET    | `/vehicle/<vin>`| Retrieve a single vehicle by VIN.     |
+| POST   | `/vehicle`      | Create a new vehicle.                 |
+| PUT    | `/vehicle/<vin>`| Update an existing vehicle by VIN.    |
+| DELETE | `/vehicle/<vin>`| Delete a vehicle by VIN.              |
 
 ### Sample Requests
 1. ```bash
@@ -84,5 +84,3 @@ A Django REST Framework-based API for managing vehicle information. This project
 1. Simply run this command to go through the test suite
     ```bash
     python manage.py test
-
-    

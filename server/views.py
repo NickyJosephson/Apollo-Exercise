@@ -4,7 +4,6 @@ from rest_framework import status
 from .serializers import VehicleSerializer
 from .models import Vehicle
 
-# Create your views here.
 class VehicleView(APIView):
     def get(self, request, vin=None):
         try:
