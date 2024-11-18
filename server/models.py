@@ -26,10 +26,9 @@ class Vehicle(models.Model):
 
     class Meta:
         constraints = [
-            UniqueConstraint(
-                name="unique_vin_case_insensitive",
-                fields=[],
-                violation_error_message="VIN must be unique (case-insensitive).",
-                expressions=[("vin").lower()],
+            models.UniqueConstraint(
+                fields=['vin'],
+                name='unique_vin_case_insensitive',
+                violation_error_message="VIN must be unique (case-insensitive)."
             )
         ]
