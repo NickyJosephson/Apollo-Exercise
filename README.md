@@ -55,7 +55,7 @@ A Django REST Framework-based API for managing vehicle information. This project
     python manage.py runserver
 
 ## **Usage**
-## Endpoints
+### Endpoints
 
 | Method | Endpoint        | Description                           |
 |--------|------------------|---------------------------------------|
@@ -65,7 +65,7 @@ A Django REST Framework-based API for managing vehicle information. This project
 | PUT    | `/vehicle/<vin>/`| Update an existing vehicle by VIN.    |
 | DELETE | `/vehicle/<vin>/`| Delete a vehicle by VIN.              |
 
-## Sample Requests
+### Sample Requests
 1. ```bash
     {
         "vin": "1HGCM82633A123456",
