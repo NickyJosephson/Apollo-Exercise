@@ -1,0 +1,1 @@
+Database is automatically created using sqlite by django, no configuration neccessary
