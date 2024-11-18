@@ -15,8 +15,6 @@ class VehicleView(APIView):
                 queryset = Vehicle.objects.all()
                 serializer = VehicleSerializer(queryset, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
-        except Vehicle.DoesNotExist:
-            return Response({'errors': 'Vehicle not found.'}, status=status.HTTP_404_NOT_FOUND)   
         except Exception as e:
             raise e
             
@@ -39,8 +37,6 @@ class VehicleView(APIView):
                 instance = serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        except Vehicle.DoesNotExist:
-            return Response({'errors': 'Vehicle not found.'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             raise e
     
@@ -49,8 +45,6 @@ class VehicleView(APIView):
             vehicle = Vehicle.objects.get(vin=vin)
             vehicle.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
-        except Vehicle.DoesNotExist:
-            return Response({'detail': 'Vehicle not found.'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             raise e
 
