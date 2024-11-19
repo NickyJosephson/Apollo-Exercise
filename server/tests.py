@@ -15,7 +15,8 @@ class VehicleViewTests(TestCase):
             model_name="Civic",
             model_year=2020,
             purchase_price=22000.50,
-            fuel_type="Gasoline"
+            fuel_type="Gasoline",
+            color="blue"
         )
 
         self.valid_payload = {
@@ -26,7 +27,8 @@ class VehicleViewTests(TestCase):
             "model_name": "Corolla",
             "model_year": 2021,
             "purchase_price": 24000.00,
-            "fuel_type": "Gasoline"
+            "fuel_type": "Gasoline",
+            "color":"blue"
         }
 
         self.invalid_payload = {
@@ -37,7 +39,8 @@ class VehicleViewTests(TestCase):
             "model_name": "Corolla",
             "model_year": "invalid",
             "purchase_price": "invalid-price",
-            "fuel_type": ""
+            "fuel_type": "",
+            "color":"blue"
         }
 
     def test_get_all_vehicles(self):
@@ -72,7 +75,8 @@ class VehicleViewTests(TestCase):
             "model_name": "Civic",
             "model_year": 2020,
             "purchase_price": 23000.00,
-            "fuel_type": "Gasoline"
+            "fuel_type": "Gasoline",
+            "color":"blue"
         }
         response = self.client.put(f"/vehicle/{self.test_vehicle.vin}", data=update_payload, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
