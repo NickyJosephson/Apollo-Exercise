@@ -4,5 +4,7 @@ from . import views
 
 urlpatterns = [
     path('vehicle',views.VehicleView.as_view(), name='vehicle-list-post-get'),
-    path('vehicle/<str:vin>',views.VehicleView.as_view(), name='vehicle-id-get-post-delete')
+    path('vehicle/<str:vin>',views.VehicleView.as_view(), name='vehicle-id-get-post-delete'),
+    path('sold-vehicles',views.SoldVehicleView.as_view(), name='vehicle-id-get-post-delete'),
+    path('sold-vehicles/<str:vin>',views.SoldVehicleView.as_view(), name='vehicle-id-get-post-delete')
 ]
