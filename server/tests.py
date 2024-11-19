@@ -70,7 +70,7 @@ class VehicleViewTests(TestCase):
             "description": "An updated description.",
             "horse_power": 160,
             "model_name": "Civic",
-            "model_year": "2020-05-01",
+            "model_year": 2020,
             "purchase_price": 23000.00,
             "fuel_type": "Gasoline"
         }
