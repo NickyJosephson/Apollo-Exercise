@@ -13,7 +13,7 @@ class VehicleViewTests(TestCase):
             description="A reliable sedan.",
             horse_power=158,
             model_name="Civic",
-            model_year="2020-05-01",
+            model_year=2020,
             purchase_price=22000.50,
             fuel_type="Gasoline"
         )
@@ -24,7 +24,7 @@ class VehicleViewTests(TestCase):
             "description": "A dependable car.",
             "horse_power": 200,
             "model_name": "Corolla",
-            "model_year": "2021-06-01",
+            "model_year": 2021,
             "purchase_price": 24000.00,
             "fuel_type": "Gasoline"
         }
@@ -35,7 +35,7 @@ class VehicleViewTests(TestCase):
             "description": "",
             "horse_power": -1,
             "model_name": "Corolla",
-            "model_year": "invalid-date",
+            "model_year": "invalid",
             "purchase_price": "invalid-price",
             "fuel_type": ""
         }
