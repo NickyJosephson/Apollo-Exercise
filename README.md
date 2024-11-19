@@ -69,6 +69,11 @@ A Django REST Framework-based API for managing vehicle information. This project
 | POST   | `/vehicle`      | Create a new vehicle.                 |
 | PUT    | `/vehicle/<vin>`| Update an existing vehicle by VIN.    |
 | DELETE | `/vehicle/<vin>`| Delete a vehicle by VIN.              |
+| GET    | `/sold-vehicles`      | Retrieve a list of all sold vehicles.      |
+| GET    | `/sold-vehicles/<vin>`| Retrieve a single sold vehicle by VIN.     |
+| POST   | `/sold-vehicles`      | Create a new sold vehicle, remove it from the vehicles table                |
+| PUT    | `/sold-vehicles/<vin>`| Update an existing sold vehicle by VIN.    |
+| DELETE | `/sold-vehicles/<vin>`| Delete a sold vehicle by VIN.              |
 
 ### Sample Requests
 1. ```bash
